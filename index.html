@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>학생 태블릿 대여 안내</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #1a6fd4;
+    --blue-light: #eef4fd;
+    --blue-mid: #c5d9f5;
+    --text: #1a2333;
+    --text-sub: #4a5568;
+    --border: #dde3ed;
+    --bg: #f5f7fa;
+    --white: #ffffff;
+    --red: #c0392b;
+    --red-light: #fdf0ef;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 28px 16px 64px;
+    line-height: 1.75;
+    font-size: 15px;
+  }
+
+  .container { max-width: 680px; margin: 0 auto; }
+
+  /* 헤더 */
+  .header {
+    background: var(--blue);
+    border-radius: 18px;
+    padding: 32px 28px;
+    margin-bottom: 16px;
+    color: white;
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1.35;
+    margin-bottom: 6px;
+  }
+  .header-sub { font-size: 13.5px; opacity: 0.8; }
+  .header-period {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 10px;
+    padding: 9px 16px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  /* 알림 박스 */
+  .notice-box {
+    background: #fffbf0;
+    border: 1.5px solid #e8d08a;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    font-size: 13.5px;
+    color: #5a4010;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    line-height: 1.65;
+  }
+  .notice-box .ni { flex-shrink: 0; font-size: 18px; margin-top: 1px; }
+
+  /* 카드 */
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--border);
+    background: var(--blue-light);
+  }
+  .card-header-icon { font-size: 18px; }
+  .card-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--blue);
+  }
+  .card-body { padding: 20px 22px; }
+
+  /* 배부 물품 */
+  .item-list { display: flex; flex-direction: column; gap: 7px; }
+  .item-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--bg);
+    border-radius: 9px;
+    font-size: 14px;
+  }
+  .item-row .dot {
+    width: 6px; height: 6px;
+    background: var(--blue);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+  .item-row.hl {
+    background: var(--blue-light);
+    border: 1px solid var(--blue-mid);
+    font-weight: 700;
+  }
+
+  /* 규정 */
+  .rule-list { display: flex; flex-direction: column; gap: 8px; }
+  .rule-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 11px 14px;
+    background: var(--bg);
+    border-radius: 9px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .rnum {
+    width: 20px; height: 20px;
+    background: var(--blue);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* 고장 처리 */
+  .contact-row { display: flex; gap: 10px; margin-bottom: 12px; }
+  .contact-item {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 13px 14px;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .contact-item strong {
+    display: block;
+    font-weight: 800;
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+  .contact-item p { color: var(--text-sub); }
+
+  .info-tag {
+    display: inline-block;
+    background: var(--blue-light);
+    border: 1px solid var(--blue-mid);
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 7px 14px;
+    border-radius: 8px;
+    margin-bottom: 14px;
+  }
+
+  .penalty-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .penalty-table th {
+    background: var(--red);
+    color: white;
+    padding: 9px 14px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .penalty-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    background: var(--red-light);
+  }
+  .penalty-table tr:last-child td { border-bottom: none; }
+  .penalty-table .pct { font-weight: 800; color: var(--red); }
+  .penalty-warn {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+
+  /* 스텝 */
+  .step-section-label {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: var(--blue);
+    letter-spacing: 0.04em;
+    margin: 14px 0 7px;
+  }
+  .step-section-label:first-child { margin-top: 0; }
+  .step-group { display: flex; flex-direction: column; gap: 7px; }
+  .step-item {
+    display: flex;
+    gap: 11px;
+    align-items: flex-start;
+    background: var(--bg);
+    border-radius: 9px;
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .snum {
+    width: 20px; height: 20px;
+    background: var(--blue);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* 팁 */
+  .tip {
+    background: var(--blue-light);
+    border-left: 3px solid var(--blue);
+    border-radius: 0 8px 8px 0;
+    padding: 9px 14px;
+    font-size: 13px;
+    color: #1a3a70;
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+
+  .divider { height: 1px; background: var(--border); margin: 14px 0; }
+
+  /* 문의 푸터 */
+  .footer {
+    background: var(--blue);
+    border-radius: 16px;
+    padding: 22px 24px;
+    color: white;
+    text-align: center;
+    margin-top: 16px;
+  }
+  .footer h3 { font-size: 16px; font-weight: 900; margin-bottom: 4px; }
+  .footer p { font-size: 13px; opacity: 0.82; }
+  .footer .loc {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 7px 18px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  b { font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="header-badge">교육정보부 공지</div>
+    <h1>학생 태블릿(iPad)<br>대여 안내</h1>
+    <div class="header-sub">안성여자고등학교 교육정보부</div>
+    <div class="header-period">
+      📅 대여 기간 &nbsp;2026. 3. 16.(월) ~ 12. 24.(목)
+    </div>
+  </div>
+
+  <div class="notice-box">
+    <span class="ni">⚠️</span>
+    <div>
+      해당 아이패드는 <b>2024년 보급품으로 약 2년간 사용된 제품</b>입니다. 신품 수준의 상태가 아닐 수 있으며, 액정 필름이 들뜨거나 마모된 기기가 있을 수 있습니다. 수령 시 상태를 확인하고, <b style="color:#c0392b;">기기 자체의 파손·결함이 의심되는 경우 교육정보부로 문의</b>하세요.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-header-icon">📦</span>
+      <span class="card-title">배부 물품</span>
+    </div>
+    <div class="card-body">
+      <div class="item-list">
+        <div class="item-row hl">
+          <span class="dot"></span>
+          <div>아이패드 10세대 <span style="font-weight:400; color:var(--text-sub);">— 케이스, 블루투스 키보드, 애플펜슬 1세대, 연결 젠더</span></div>
+        </div>
+        <div class="item-row hl">
+          <span class="dot"></span>
+          <div>C타입 충전 케이블 (흰색) — 별도 배부 <span style="font-weight:400; color:var(--text-sub);">/ 펜슬 페어링·충전, 키보드 충전용</span></div>
+        </div>
+      </div>
+      <div class="tip" style="margin-top:12px; background:#fff7e6; border-color:#e0a020; color:#7a4a00; font-weight:700;">📌 수령 시 케이스 내 물품을 확인하고, 이상이 있으면 즉시 교육정보부로 문의하세요.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-header-icon">📋</span>
+      <span class="card-title">대여 규정 및 주의사항</span>
+    </div>
+    <div class="card-body">
+      <div class="rule-list">
+        <div class="rule-item"><div class="rnum">1</div><div>대여한 기기는 <b>학습 목적으로만</b> 사용해야 합니다.</div></div>
+        <div class="rule-item"><div class="rnum">2</div><div>기기는 항상 <b>케이스에 넣어</b> 보관하고, 파손·분실에 주의하세요.</div></div>
+        <div class="rule-item"><div class="rnum">3</div><div>기기 설정(초기화, 앱 삭제 등)을 <b>임의로 변경</b>할 수 없습니다.</div></div>
+        <div class="rule-item"><div class="rnum">4</div><div>무단으로 타인에게 양도하거나 대여할 수 없습니다.</div></div>
+        <div class="rule-item"><div class="rnum">5</div><div>대여 기간 종료 또는 학적 변동(전출·자퇴 등) 시 <b>개인 보안 설정을 해제하여 반납</b>합니다.</div></div>
+        <div class="rule-item" style="background:#fdf0ef; border:1px solid #f0c0bc;"><div class="rnum" style="background:#c0392b;">6</div><div>키보드·애플펜슬은 <b>고출력 어댑터에 직접 연결하여 충전하지 마세요.</b> 제공된 케이블을 이용해 아이패드 또는 PC USB 포트로 충전하세요.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-header-icon">🛠️</span>
+      <span class="card-title">고장·파손 시 처리</span>
+    </div>
+    <div class="card-body">
+      <div class="info-tag">✅ 일반적인 수리 비용은 학생 부담 없음</div>
+      <div class="contact-row">
+        <div class="contact-item">
+          <strong>💬 카카오채널</strong>
+          <p>"경기도교육청 스마트기기" 검색<br>→ 상담원 연결 또는 챗봇 이용</p>
+        </div>
+        <div class="contact-item">
+          <strong>📱 모바일 접수</strong>
+          <p>단말기 뒷면 QR코드 스캔<br>→ A/S 접수 링크 접속</p>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="penalty-warn">⚠️ 아래의 경우 변상 책임이 있습니다</div>
+      <table class="penalty-table">
+        <tr><th>사유</th><th>변상 기준</th></tr>
+        <tr><td>분실</td><td class="pct">손해금액의 40%</td></tr>
+        <tr><td>고의·중과실에 의한 침수·파손</td><td class="pct">총 수리비의 20%</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-header-icon">✏️</span>
+      <span class="card-title">애플펜슬 준비 및 연결 방법</span>
+    </div>
+    <div class="card-body">
+      <div class="step-section-label">① 라벨 부착</div>
+      <div class="step-group">
+        <div class="step-item"><div class="snum">1</div><div>라벨 스티커의 <b>화살표 방향부터</b> 펜슬에 맞춰 붙인 후 감아줍니다.</div></div>
+        <div class="step-item"><div class="snum">2</div><div>이미 부착된 라벨이 있다면 <b>제거 후</b> 새 라벨을 붙여주세요.</div></div>
+      </div>
+      <div class="step-section-label">② 아이패드 연결</div>
+      <div class="step-group">
+        <div class="step-item"><div class="snum">1</div><div>펜슬에 커넥터를 연결합니다.</div></div>
+        <div class="step-item"><div class="snum">2</div><div><b>제공된 흰색 케이블</b>로 아이패드와 연결합니다.</div></div>
+      </div>
+      <div class="tip">※ 펜슬에는 별도의 뚜껑이 없습니다.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-header-icon">⌨️</span>
+      <span class="card-title">블루투스 키보드 연결 방법</span>
+    </div>
+    <div class="card-body">
+      <div class="step-group">
+        <div class="step-item"><div class="snum">1</div><div>키보드 <b>전원을 켭니다.</b></div></div>
+        <div class="step-item"><div class="snum">2</div><div>키보드의 <b>Connect 버튼</b>을 누릅니다.</div></div>
+        <div class="step-item"><div class="snum">3</div><div>아이패드에서 <b>설정 → Bluetooth</b>를 활성화합니다.</div></div>
+        <div class="step-item"><div class="snum">4</div><div>기기 목록에서 <b>키보드 뒷면의 일련번호(DNT로 시작)</b>를 찾아 페어링합니다.</div></div>
+      </div>
+      <div class="tip">※ 한글/영문 전환: <b>CapsLock</b> 또는 <b>F6</b> 키</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <h3>💬 문의</h3>
+    <p>궁금한 사항은 교육정보부로 문의하세요.</p>
+    <div class="loc">📍 교육정보부 &nbsp;|&nbsp; 2층 본교무실2 [2-3교실 옆]</div>
+  </div>
+
+</div>
+</body>
+</html>
